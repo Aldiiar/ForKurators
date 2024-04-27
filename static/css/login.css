@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #cbc9c9;
+}
+
+.container {
+    background-color: white;
+    padding: 100px 100px; /* Уменьшил padding снизу до 80px */
+    border-radius: 10px;
+    margin-top: 100px; /* Уменьшил margin-top до 50px */
+}
+
+.button-group {
+    margin-top: 60px;
+}
+
+.button-group button,
+.button-group a {
+    margin: 0 20px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;/* Увеличиваем размер текста кнопок */
+    padding: 15px 20px;
+    border-radius: 15px;/* Увеличиваем размер кнопок */
+}
+
+.button-group button {
+    background: rgba(1, 50, 161, 0.81);
+    color: white;
+}
+
+.heading {
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    position: relative;
+    top: -40px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.form-group label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    position: absolute;
+    left: -40px; /* Изменил значение left */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.form-group input {
+    width: calc(50% + 150px); /* Изменил ширину */
+    padding: 13px;
+    margin-left: 50px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.fa {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #ccc;
+}

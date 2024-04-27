@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="form-horizontal">
+            <form action="/users/registration/" method="post">
+                {% csrf_token %}
+                <div class="heading">
+                    <span>РЕГИСТРАЦИЯ</span>
+                </div>
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.department.label_tag }}
+                    {{ form.department }}
+                    <i class="fa fa-building"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.university.label_tag }}
+                    {{ form.university }}
+                    <i class="fa fa-university"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.phone_number.label_tag }}
+                    {{ form.phone_number }}
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.address.label_tag }}
+                    {{ form.address }}
+                    <i class="fa fa-address-card"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label_tag }}
+                    {{ form.confirm_password }}
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="button-group">
+                    <button type="submit" href="/users/login/" class="btn btn-default">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                    <a href="/users/login/" class="btn btn-default">Уже есть аккаунт?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

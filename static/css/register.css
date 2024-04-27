@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Изменил на центрирование по центру */
+    background-color: #cbc9c9;
+}
+
+.container {
+    background-color: white;
+    padding: 60px; /* Увеличил padding до 60px */
+    border-radius: 10px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Увеличил ширину контейнера */
+}
+
+.button-group {
+    margin-top: 30px; /* Увеличил отступ между кнопками */
+    text-align: center;
+}
+
+.button-group button,
+.button-group a {
+    display: block;
+    margin: 10px auto;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.button-group button {
+    background: rgba(1, 50, 161, 0.81);
+    color: white;
+}
+
+.heading {
+    font-size: 45px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center; /* Центрируем заголовок по горизонтали */
+    margin-bottom: 20px;
+}
+
+.heading span {
+    display: block;
+    text-align: center;
+}
+
+.form-group label {
+    font-size: 16px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: calc(100% - 20px); /* Изменил ширину инпутов */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.fa {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
