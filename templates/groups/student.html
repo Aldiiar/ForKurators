@@ -1,0 +1,101 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/student.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <div class="card profile-card">
+            {% if student.photo %}
+                <img src="{{ student.photo.url }}" class="rounded-circle" alt="Photo">
+            {% else %}
+                <img src="{% static 'images/defaultphoto.png' %}" class="rounded-circle" alt="Photo">
+            {% endif %}
+            <div class="container">
+                <h4><b>{{ student.name }} {{ student.surname }}</b></h4>
+                <p>Группа: {{ student.group }}</p>
+                <p>Телефон: {{ student.phone_number }}</p>
+                <p>Дата рождения: {{ student.date_of_b }}</p>
+            </div>
+            <div class="card-buttons">
+                <a href="{% url 'edit_student' student.pk %}" class="btn btn-edit">Изменить</a>
+                <a href="{% url 'delete_student' student.pk %}" class="btn btn-delete">Удалить</a>
+            </div>
+        </div>
+       <div class="card chart-card">
+            <div class="container">
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const deleteButtons = document.querySelectorAll(".btn-delete");
+        deleteButtons.forEach(button => {
+            button.addEventListener("click", function(event) {
+                if (!confirm("Вы уверены, что хотите удалить этого студента?")) {
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // Пример данных для диаграмм
+        const performanceData = {
+            labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
+            datasets: [{
+                label: 'Успеваемость',
+                data: [85, 65, 78, 50, 92],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const attendanceData = {
+            labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
+            datasets: [{
+                label: 'Посещаемость',
+                data: [95, 88, 90, 93, 97],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        const performanceChartCtx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(performanceChartCtx, {
+            type: 'bar',
+            data: performanceData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const attendanceChartCtx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(attendanceChartCtx, {
+            type: 'bar',
+            data: attendanceData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

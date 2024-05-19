@@ -1,0 +1,40 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/group_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="group-details">
+        <h2>{{ group.group_name }}</h2>
+        <h3>{{ group.department }}</h3>
+
+        <a href="{% url 'add_student' group.pk %}" class="btn btn-primary add-student-btn">Добавить студента</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Дата рождения</th>
+                    <th scope="col">Номер телефона</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in group.student_set.all %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.surname }}</td>
+                    <td>{{ student.date_of_b }}</td>
+                    <td>{{ student.phone_number }}</td>
+                    <td><a href="/student/{{ student.id }}/" class="btn btn-secondary more-btn">more</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

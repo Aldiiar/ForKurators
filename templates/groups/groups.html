@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Groups</title>
-</head>
-<body>
+{% extends 'layouts/index.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/groups.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if groups %}
+                {% for group in groups %}
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem; margin-bottom: 20px;">
+                            <img src="{% static 'images/615075.png' %}" class="card-img-top" alt="Group Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ group.group_name }}</h5>
+                                <p class="card-text">{{ group.department }}</p>
+                                <a href="{% url 'group_detail' group.pk %}" class="btn btn-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>У вас нет назначенных групп.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

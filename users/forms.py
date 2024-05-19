@@ -1,5 +1,15 @@
 from django import forms
 
+class ChangeForm(forms.Form):
+    photo = forms.ImageField(required=False, label='Фото')
+    email = forms.EmailField(label='Email')
+    first_name = forms.CharField(max_length=100, label='Имя')
+    last_name = forms.CharField(max_length=100, label='Фамилия')
+    department = forms.CharField(max_length=100, required=False, label='Кафедра')
+    university = forms.CharField(max_length=100, required=False, label='Университет')
+    phone_number = forms.CharField(max_length=20, required=False, label='Номер телефона')
+    address = forms.CharField(max_length=200, required=False, label='Адрес')
+
 class RegistrationForm(forms.Form):
     email = forms.EmailField(label='Email')
     first_name = forms.CharField(max_length=100, label='name')

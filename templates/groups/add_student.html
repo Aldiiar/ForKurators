@@ -1,0 +1,50 @@
+{% extends 'layouts/index.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/add_student.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="heading">
+                <span>Добавление студента</span>
+            </div>
+            <form action="{% url 'add_student' group.pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_photo">Фото студента:</label>
+                    {{ form.photo }}
+                    <i class="fa fa-image"></i>
+                </div>
+                <div class="form-group">
+                    <label for="id_first_name">Имя:</label>
+                    {{ form.name }}
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <label for="id_last_name">Фамилия:</label>
+                    {{ form.surname }}
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <label for="id_phone_number">Номер телефона:</label>
+                    {{ form.phone_number }}
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="form-group">
+                    <label for="id_date_of_b">Дата рождения:</label>
+                    {{ form.date_of_b }}
+                </div>
+                <div class="button-group">
+                    <button type="submit" href="{% url 'group_detail' group.pk %}" class="btn btn-default">
+                        Добавить студента
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
